@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -P w09
+#PBS -q normal
+#PBS -l ncpus=48
+#PBS -l mem=192GB
+#PBS -l walltime=02:30:00
+#PBS -l storage=scratch/w09+gdata/w09
+#PBS -l wd
+
+module purge
+module load python3/3.12.1
+module load openmpi/5.0.8
+
+# Activate virtual environment
+source ~/tomo_env/bin/activate
+
+mpirun -np 48 python gadi_semi_auto.py
+
